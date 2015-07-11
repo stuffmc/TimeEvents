@@ -8,14 +8,17 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
-
-class InterfaceController: WKInterfaceController {
-
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
+  
+    let session = WCSession.defaultSession()
+    @IBOutlet var table: WKInterfaceTable!
+  
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
-        // Configure interface objects here.
+        session.delegate = self
+        session.activateSession()
     }
 
     override func willActivate() {
@@ -28,4 +31,21 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+      if let events = applicationContext["events"] as? [NSDate] {
+        table.setNumberOfRows(events.count, withRowType: "Event")
+        for index in 0..<events.count {
+          if let trc = table.rowControllerAtIndex(index) as? TableRowController {
+            trc.eventLabel.setText(events[index].description)
+          }
+        }
+      }
+    }
+
+}
+
+class TableRowController: NSObject {
+  
+  @IBOutlet var eventLabel: WKInterfaceLabel!
+  
 }

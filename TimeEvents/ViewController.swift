@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class ViewController: UIViewController {
+extension WCSession {
+  var allGood: Bool { get {
+    return paired == true && watchAppInstalled == true && watchDirectoryURL != nil
+  } }
+}
+
+class ViewController: UIViewController, WCSessionDelegate {
   
+  let session = WCSession.defaultSession()
   var events = [NSDate()]
 
   @IBOutlet weak var textView: UITextView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print(WCErrorCode.NotReachable)
+    if WCSession.isSupported() {
+      session.delegate = self
+      session.activateSession()
+    }
     refresh()
   }
 
@@ -31,6 +44,27 @@ class ViewController: UIViewController {
   
   func refresh() {
     textView.text = events.description.stringByReplacingOccurrencesOfString(",", withString: "\n")
+    do {
+      try session.updateApplicationContext(["events" : events])
+    } catch {
+      print(error)
+    }
+  }
+  
+  func output(string: AnyObject) {
+    dispatch_sync(dispatch_get_main_queue()) { () -> Void in
+      self.textView.text = "\(self.textView.text)\n \(string)"
+    }
+  }
+  
+  func sessionWatchStateDidChange(session: WCSession) {
+    output(session.paired)
+    output(session.watchAppInstalled)
+    output(session.watchDirectoryURL ?? "no watch dir")
+    if session.allGood {
+      try! session.updateApplicationContext(["events" : events])
+      output("CONTEXT: \(session.applicationContext)")
+    }
   }
 
 }

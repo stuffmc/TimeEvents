@@ -740,6 +740,7 @@
 				4C8015671B51775E0096C115 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C8015691B51775E0096C115 /* Build configuration list for PBXNativeTarget "TimeEvents WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -748,6 +749,7 @@
 				4C80156B1B51775E0096C115 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C80156D1B51775E0096C115 /* Build configuration list for PBXNativeTarget "TimeEvents" */ = {
 			isa = XCConfigurationList;
@@ -756,6 +758,7 @@
 				4C80156F1B51775E0096C115 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C8015701B51775E0096C115 /* Build configuration list for PBXNativeTarget "TimeEventsTests" */ = {
 			isa = XCConfigurationList;
@@ -764,6 +767,7 @@
 				4C8015721B51775E0096C115 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C8015731B51775E0096C115 /* Build configuration list for PBXNativeTarget "TimeEventsUITests" */ = {
 			isa = XCConfigurationList;
@@ -772,6 +776,7 @@
 				4C8015751B51775E0096C115 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
