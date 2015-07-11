@@ -9,10 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
+  var events = [NSDate()]
 
+  @IBOutlet weak var textView: UITextView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    refresh()
   }
 
   override func didReceiveMemoryWarning() {
@@ -20,6 +24,14 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
+  @IBAction func add(sender: UIButton) {
+    events.append(NSDate())
+    refresh()
+  }
+  
+  func refresh() {
+    textView.text = events.description.stringByReplacingOccurrencesOfString(",", withString: "\n")
+  }
 
 }
 
