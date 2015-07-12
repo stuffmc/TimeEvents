@@ -15,7 +15,7 @@
                                 <tableRow identifier="Event" id="aTh-8p-qmP" customClass="TableRowController" customModule="TimeEvents_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="tMJ-jS-pe6">
                                         <items>
-                                            <label width="131" height="34" alignment="left" text="Event" textAlignment="center" id="hGC-h6-SVy">
+                                            <label width="131" height="34" alignment="left" text="Event" textAlignment="center" numberOfLines="2" id="hGC-h6-SVy">
                                                 <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                             </label>
                                         </items>
